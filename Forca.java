@@ -68,7 +68,7 @@ public class Forca {
         List<String> colecao = new ArrayList<String>();
         colecao.add("audi");
         colecao.add("lamborghini");
-        colecao.add("general motors");
+        colecao.add("honda");
         colecao.add("volkswagen");
         colecao.add("skoda");
         colecao.add("volvo");
@@ -76,7 +76,47 @@ public class Forca {
         colecao.add("lada");
         colecao.add("gurgel");
         colecao.add("pontiac");
-        
+        colecao.add("toyota");
+        colecao.add("bmw");
+        colecao.add("nissan");
+        colecao.add("ford");
+        colecao.add("porsche");
+        colecao.add("hyundai");
+        colecao.add("renault");
+        colecao.add("tesla");
+        colecao.add("peugeot");
+        colecao.add("chevrolet");
+        colecao.add("kia");
+        colecao.add("suzuki");
+        colecao.add("fiat");
+        colecao.add("mazda");
+        colecao.add("gmc");
+        colecao.add("citroen");
+        colecao.add("subaru");
+        colecao.add("lexus");
+        colecao.add("ferrari");
+        colecao.add("isuzu");
+        colecao.add("cadillac");
+        colecao.add("daihatsu");
+        colecao.add("opel");
+        colecao.add("jeep");
+        colecao.add("scania");
+        colecao.add("dodge");
+        colecao.add("acura");
+        colecao.add("bentley");
+        colecao.add("chrysler");
+        colecao.add("buick");
+        colecao.add("jaguar");
+        colecao.add("jac");
+        colecao.add("smart");
+        colecao.add("pagani");
+        colecao.add("lotus");
+        colecao.add("mini");
+        colecao.add("bugatti");
+        colecao.add("maserati");
+        colecao.add("dafra");
+        colecao.add("hummer");
+
         //Sorteando uma dessas strings e atribuindo o valor da escolha a variavel "chosen"
         Random gerador = new Random();
         Integer chosen;
@@ -91,10 +131,16 @@ public class Forca {
         descobertos.add(0);
         
         //Lógica do jogo
-        outputStream.write("\n\nBEM VINDO AO JOGO DA FORCA DAS MARCAS DE CARRO\nVocê tem uma palavra e 5 chances, será que consegue vencer ?\n".getBytes());
+        outputStream.write("\n\nBEM VINDO AO JOGO DA FORCA DAS MARCAS DE CARRO\nVocê tem uma palavra e algumas chances, será que consegue vencer ?\n\nEscolha sua Dificuldade:\n3 - Fácil (15 chances)\n2 - Médio (10 chances)\n1 - Difícil (5 chances)\n0 - IMPOSSIBRU (Impossível)\n\n--> ".getBytes());
+        userLine = bf.readLine();
+        Integer dificuldade = Integer.parseInt(userLine); dificuldade *= 5;
         outputStream.write("\nSua Palavra foi escolhida e tem o número de caracteres igual a: ".getBytes());
         outputStream.write(tamPalavra.toString().getBytes());
         while(!userLine.equals("fim")) {
+            if (tentrealizadas >= dificuldade){
+                outputStream.write("\n\nVocê excedeu o limite de tentativas!! Comece novamente \n".getBytes());
+                break;
+            }
             rodada++;
             outputStream.write("\n\nRodada ".getBytes());
             outputStream.write(rodada.toString().getBytes());
@@ -129,10 +175,6 @@ public class Forca {
             else
                 descobertos.set(tamPalavra, 1);
 
-            if (tentrealizadas >= 5){
-                outputStream.write("\n\nVocê excedeu o limite de tentativas!! Comece novamente \n".getBytes());
-                break;
-            }
 
             if (descobertos.get(tamPalavra) == 0){
                 tentrealizadas++;
@@ -143,14 +185,7 @@ public class Forca {
             else{
             outputStream.write("\n\nLetra Certa! Sua quantidade de erros: ".getBytes());
             outputStream.write(tentrealizadas.toString().getBytes());
-            outputStream.write("\n\n".getBytes());
             }
-
-
-/*             for (int i = 0; i < tamPalavra; i++){
-                if ()
-            } */
-
         }
         if (marcador != tamPalavra){
             outputStream.write("A palavra correta era -> ".getBytes());
